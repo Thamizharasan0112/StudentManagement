@@ -1,0 +1,76 @@
+import java.util.ArrayList;
+
+public class StudentService {
+
+    ArrayList<Student> students = new ArrayList<>();
+
+    // Add Student
+    public void addStudent(Student student) {
+
+        for (Student s : students) {
+            if (s.getId() == student.getId()) {
+                System.out.println("Student ID already exists!");
+                return;
+            }
+        }
+
+        students.add(student);
+        System.out.println("Student added successfully!");
+    }
+
+    // View Students
+    public void viewStudents() {
+
+        if (students.isEmpty()) {
+            System.out.println("No student records found.");
+            return;
+        }
+
+        for (Student s : students) {
+            System.out.println(s);
+        }
+    }
+
+    // Search Student
+    public Student searchStudent(int id) {
+
+        for (Student s : students) {
+            if (s.getId() == id) {
+                return s;
+            }
+        }
+
+        return null;
+    }
+
+    // Update Student
+    public void updateStudent(int id, String name, int age, String course) {
+
+        Student s = searchStudent(id);
+
+        if (s != null) {
+
+            s.setName(name);
+            s.setAge(age);
+            s.setCourse(course);
+
+            System.out.println("Student updated successfully!");
+
+        } else {
+            System.out.println("Student not found!");
+        }
+    }
+
+    // Delete Student
+    public void deleteStudent(int id) {
+
+        Student s = searchStudent(id);
+
+        if (s != null) {
+            students.remove(s);
+            System.out.println("Student deleted successfully!");
+        } else {
+            System.out.println("Student not found!");
+        }
+    }
+}

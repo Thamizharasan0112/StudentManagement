@@ -1,0 +1,3 @@
+102,Praveen,24,Python
+103,Surya,24,HTML
+104,Santhosh,24,JavaScript
